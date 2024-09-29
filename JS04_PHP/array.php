@@ -16,6 +16,11 @@ echo "<br> Karyawan <br>";
 
 $daftarKaryawan = [
     ['Alice', 7],
+
+
+
+
+    
     ['Bob', 3],
     ['Charlie', 9],
     ['David', 5],
