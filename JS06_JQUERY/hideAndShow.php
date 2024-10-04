@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="styleHideAndShow.css">
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- CDN jQuery -->
         <script>
             $(document).ready(function(){
