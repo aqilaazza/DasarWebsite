@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="login.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- Link to jQuery library -->
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username"  name="username" placeholder="Masukkan username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+      </div>
+      <div class="forgot-password">
+        <a href="#" id="forgotPasswordLink">Lupa password?</a>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <div id="note"></div> <!-- Tempat untuk menampilkan hasil login -->
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      // Fungsi untuk menangani submit form login
+      $('#loginForm').on('submit', function(e) {
+        e.preventDefault(); // Mencegah reload halaman
+
+        // Ambil data dari form
+        const username = $('#username').val();
+        const password = $('#password').val();
+
+        // Kirim data menggunakan AJAX ke login.php
+        $.ajax({
+          type: 'POST',
+          url: 'login.php', // Lokasi file PHP yang akan memproses login
+          data: { username: username, password: password },
+          success: function(response) {
+            $('#note').html(response); // Tampilkan hasil dari server
+          },
+          error: function() {
+            $('#note').html('Terjadi kesalahan, coba lagi nanti.');
+          }
+        });
+      });
+
+      // Fungsi untuk menangani klik pada link lupa password
+      $('#forgotPasswordLink').on('click', function(e) {
+        e.preventDefault();
+        $('#note').html('Silakan hubungi admin untuk reset password.');
+      });
+    });
+  </script>
+</body>
+</html>

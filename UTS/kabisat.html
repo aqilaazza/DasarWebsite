@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pemeriksa Tahun Kabisat</title>
+  <link rel="stylesheet" href="kabisat.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Pemeriksa Tahun Kabisat</h1>
+    <form id="FormTahunKabisat">
+      <label for="tahun">Masukkan tahun :</label>
+      <input type="number" id="tahun" name="tahun" placeholder="contoh (2024)" required>
+      <button type="submit">Cek tahun</button>
+    </form>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#FormTahunKabisat').on('submit', function(e) {
+        e.preventDefault();
+  
+        // Mengambil inputan
+        const tahun = $('#tahun').val();
+  
+        // Validasi input harus berupa 4 digit
+        if (!/^\d{4}$/.test(tahun)) {
+          $('#result').text('Silakan masukkan tahun yang valid (4 digit).');
+          return;
+        }
+  
+        // Mengirim data ke server jika input valid
+        $.ajax({
+          type: 'POST',
+          url: 'kabisat.php', // File PHP untuk memproses data
+          data: { tahun: tahun },
+          success: function(response) {
+            // Menampilkan hasil dari server
+            $('#result').text(response);
+          },
+          error: function() {
+            $('#result').text('Terjadi kesalahan saat memproses permintaan.');
+          }
+        });
+      });
+    });
+  </script>
+  
+</body>
+</html>

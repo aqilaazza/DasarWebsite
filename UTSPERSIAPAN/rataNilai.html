@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Rata-Rata Nilai</title>
+    <link rel="stylesheet" href="rataNilai.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- Link ke jQuery -->
+</head>
+<body>
+    <div class="container">
+        <h2>Form Rata-rata Nilai</h2>
+        <!-- Form untuk input nilai -->
+        <form id="nilaiForm">
+            <div class="input-group">
+                <label for="nilai1">Nilai 1:</label>
+                <input type="number" id="nilai1" name="nilai1" placeholder="Masukkan nilai 1" required>
+            </div>
+            <div class="input-group">
+                <label for="nilai2">Nilai 2:</label>
+                <input type="number" id="nilai2" name="nilai2" placeholder="Masukkan nilai 2" required>
+            </div>
+            <div class="input-group">
+                <label for="nilai3">Nilai 3:</label>
+                <input type="number" id="nilai3" name="nilai3" placeholder="Masukkan nilai 3" required>
+            </div>
+            <div class="input-group">
+                <label for="nilai4">Nilai 4:</label>
+                <input type="number" id="nilai4" name="nilai4" placeholder="Masukkan nilai 4" required>
+            </div>
+            <div class="input-group">
+                <label for="nilai5">Nilai 5:</label>
+                <input type="number" id="nilai5" name="nilai5" placeholder="Masukkan nilai 5" required>
+            </div>
+            <button type="submit">Hitung Rata-rata</button>
+        </form>
+
+        <!-- Tempat untuk menampilkan hasil -->
+        <div id="result"></div>
+        <div id="note"></div>
+    </div>
+
+    <script>
+        // Fungsi untuk menghitung rata-rata
+        $(document).ready(function() {
+            $('#nilaiForm').on('submit', function(e) {
+                e.preventDefault(); // Mencegah refresh halaman
+
+                // Mengirim data ke server menggunakan AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: 'rataNilai.php', // Ganti dengan nama file PHP
+                    data: $(this).serialize(), // Mengambil data dari form
+                    success: function(response) {
+                        const data = JSON.parse(response);
+                        // Menampilkan hasil ke halaman
+                        $('#result').html(`Rata-rata Nilai: ${data.rataRata}`);
+                        $('#note').html(data.catatan);
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat menghitung rata-rata.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

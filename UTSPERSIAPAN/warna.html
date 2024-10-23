@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Pemilihan Warna & Pencarian</title>
+    <link rel="stylesheet" href="warna.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- Link ke jQuery -->
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Form Pemilihan Warna</h1>
+    <form id="formPilihWarna" method="POST">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="color">Warna Favorit:</label>
+        <select id="color" name="color" required>
+            <option value="">--Pilih Warna--</option>
+            <option value="Merah">Merah</option>
+            <option value="Biru">Biru</option>
+            <option value="Hijau">Hijau</option>
+            <option value="Kuning">Kuning</option>
+            <option value="Ungu">Ungu</option>
+        </select>
+
+        <input type="submit" value="Kirim">
+    </form>
+
+    <!-- Form untuk pencarian berdasarkan warna -->
+    <h2>Cari Nama Berdasarkan Warna</h2>
+    <form id="formCariWarna" method="GET">
+        <label for="cari_warna">Cari Warna:</label>
+        <select id="cari_warna" name="cari_warna" required>
+            <option value="">--Pilih Warna--</option>
+            <option value="Merah">Merah</option>
+            <option value="Biru">Biru</option>
+            <option value="Hijau">Hijau</option>
+            <option value="Kuning">Kuning</option>
+            <option value="Ungu">Ungu</option>
+        </select>
+
+        <input type="submit" value="Cari">
+    </form>
+
+    <!-- Menampilkan hasil pencarian -->
+    <div class="result">
+        <p id="resultText"></p>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Menangani pengiriman form pemilihan warna
+        $('#formPilihWarna').on('submit', function(e) {
+            e.preventDefault(); // Mencegah pengiriman form biasa
+
+            // Mengirim data ke server menggunakan AJAX
+            $.ajax({
+                type: 'POST',
+                url: 'warna.php',
+                data: $(this).serialize(), // Mengambil data dari form
+                success: function(response) {
+                    const data = JSON.parse(response);
+                    if (data.status === 'success') {
+                        alert(data.message); // Menampilkan pesan sukses
+                    }
+                },
+                error: function() {
+                    alert('Terjadi kesalahan saat mengirim data.');
+                }
+            });
+        });
+
+        // Menangani pencarian warna
+        $('#formCariWarna').on('submit', function(e) {
+            e.preventDefault(); // Mencegah pengiriman form biasa
+
+            // Mengirim permintaan pencarian warna
+            $.ajax({
+                type: 'GET',
+                url: 'warna.php',
+                data: $(this).serialize(), // Mengambil data dari form
+                success: function(response) {
+                    const data = JSON.parse(response);
+                    if (data.status === 'success') {
+                        $('#resultText').html(data.result); // Menampilkan hasil pencarian
+                    }
+                },
+                error: function() {
+                    alert('Terjadi kesalahan saat mencari data.');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

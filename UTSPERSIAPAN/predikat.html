@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Predikat</title>
+    <link rel="stylesheet" href="predikat.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- Link ke jQuery -->
+</head>
+<body>
+    <div class="container">
+        <h2>Form Predikat Nilai dan Ranking</h2>
+
+        <form id="formPredikat">
+            <div class="input-group">
+                <label for="name">Nama</label>
+                <input type="text" id="name" name="name" placeholder="Masukkan Nama" required>
+            </div>
+            <div class="input-group">
+                <label for="score">Nilai</label>
+                <input type="number" id="score" name="score" placeholder="Masukkan Nilai" required>
+            </div>
+            <button type="submit">Tambahkan</button>
+        </form>
+
+        <!-- Tombol untuk Reset Data Sesi -->
+        <form method="POST" action="predikat.php" style="display: inline;">
+            <button type="submit" name="reset" value="1">Reset Data</button>
+        </form>
+
+        <div class="ranking">
+            <h3>Urutan Ranking:</h3>
+            <ul id="rankingList">
+                <!-- Daftar ranking akan ditampilkan di sini -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Menangani pengiriman form secara asinkron
+            $('#formPredikat').on('submit', function(e) {
+                e.preventDefault(); // Mencegah pengiriman form biasa
+
+                // Mengirim data form ke server
+                $.ajax({
+                    type: 'POST',
+                    url: 'predikat.php',
+                    data: $(this).serialize(), // Mengambil data dari form
+                    success: function(response) {
+                        // Mengurai data JSON dari server
+                        const data = JSON.parse(response);
+                        updateRankingList(data); // Memperbarui daftar ranking
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat memproses data.');
+                    }
+                });
+            });
+        });
+
+        // Fungsi untuk memperbarui daftar ranking
+        function updateRankingList(data) {
+            $('#rankingList').empty(); // Menghapus daftar lama
+            data.forEach(function(item, index) {
+                const grade = getGrade(item.score); // Tentukan predikat berdasarkan nilai
+                $('#rankingList').append("<li>" + (index + 1) + ". " + item.name + " - Nilai: " + item.score + " (Predikat: " + grade + ")</li>");
+            });
+        }
+
+        // Fungsi untuk menentukan predikat
+        function getGrade(score) {
+            if (score >= 80) return 'A';
+            else if (score >= 70) return 'B';
+            else if (score >= 55) return 'C';
+            else if (score >= 40) return 'D';
+            else return 'E';
+        }
+    </script>
+</body>
+</html>
