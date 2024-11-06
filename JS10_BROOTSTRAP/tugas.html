@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pengenalan Bootstrap</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Jumbotron dengan warna latar belakang lebih soft dan teks warna putih */
+        .jumbotron {
+            background-color: #c8cacd;
+            color: #35343d;
+        }
+        .jumbotron h1 {
+            color: #0e1010;
+        }
+        /* Card dengan border dan tombol yang lebih menonjol */
+        .card {
+            border: 2px solid #a0d0ed;
+        }
+        .card .btn-primary {
+            background-color: #3d0ee5;
+            border-color: #3d0ee5;
+        }
+        /* Footer dengan warna gelap yang kontras */
+        footer {
+            background-color: #343a40;
+        }
+    </style>
+</head>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Laman Aqila Nur Azza</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+     <!-- Jumbotron -->
+     <div class="jumbotron text-center">
+        <h1>WELCOME TO AQILA'S WEBSITE</h1>
+        <p>Hello, this is my first time learning Bootstrap to find out how to create a responsive and attractive appearance on the website.
+        </p>
+        <a href="#" class="btn btn-primary">Learn More</a>
+    </div>
+
+    <!-- Gambar -->
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img src="About you.jpg" class="img-fluid rounded" alt="Contoh Gambar">
+                <p class="mt-2">Lately I really like to listen to this song. Because this song reminde me to someone. </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Section -->
+    <div class="container">
+        <h2 class="text-center mb-4">My features</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="me.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Fitur 1</h5>
+                        <p class="card-text">It's all about me</p>
+                        <a href="#" class="btn btn-primary">See Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="you.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Fitur 2</h5>
+                        <p class="card-text">It's all about you</p>
+                        <a href="#" class="btn btn-primary">See Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="us.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Fitur 3</h5>
+                        <p class="card-text">It's all about us</p>
+                        <a href="#" class="btn btn-primary">See Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3 mt-4">
+        <p>© 2024 Halaman Web Bootstrap. All rights reserved.</p>
+    </footer>
+</body>
+</html>
