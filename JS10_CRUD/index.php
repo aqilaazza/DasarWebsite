@@ -20,11 +20,11 @@
                 echo "<tr><th>No</th><th>Nama</th><th>Jenis Kelamin</th>
                         <th>Alamat</th><th>No. Telp</th><th>Aksi</th></tr>";
                 while ($row = mysqli_fetch_array($result)) {
-                    $kelamin = ($row["jenis_kelamin"] === 'L'?'Laki-laki':'Perempuan');
+                    $jenis_kelamin = ($row["jenis_kelamin"] === 'L'?'Laki-laki':'Perempuan');
                     echo "<tr>";
                     echo "<td>" . $no++ . "</td>";
                     echo "<td>" . $row["nama"] . "</td>";
-                    echo "<td>" . $kelamin . "</td>";
+                    echo "<td>" . $jenis_kelamin . "</td>";
                     echo "<td>" . $row["no_telp"] . "</td>";
                     echo "<td>" . $row["alamat"] . "</td>";
                     echo "<td>";

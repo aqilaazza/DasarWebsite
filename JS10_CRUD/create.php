@@ -12,14 +12,16 @@
                 <input type="text" name="nama" id="nama" required>
                 <label for="jenis_kelamin">Jenis Kelamin: </label>
                 <div class="radio-group">
-                    <input type="radio" name="jenis_kelamin" value="L" id="laki-laki"required><label for="laki">Laki-laki</label>
-                    <input type="radio" name="jenis_kelamin" value="P" id="perempuan"required><label for="perempuan">Perempuan</label>
+                    <input type="radio" name="jenis_kelamin" value="L" id="laki-laki"required>
+                    <label for="laki-laki">Laki-laki</label>
+                    <input type="radio" name="jenis_kelamin" value="P" id="perempuan"required>
+                    <label for="perempuan">Perempuan</label>
                 </div>
                 <label for="alamat">Alamat: </label>
                 <input type="text" name="alamat" id="alamat" required>
                 <label for="no_telp">No. Telp: </label>
                 <input type="text" name="no_telp" id="no_telp" required>
-                <button type="sumbit">Simpan Data</button>
+                <button type="submit">Simpan Data</button>
                 <a href="index.php" class="btn-kembali">Kembali</a>
             </form>
         </div>
