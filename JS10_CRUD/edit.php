@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Data Anggota</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-
 <body>
-
     <?php
     include('koneksi.php');
-
     $id = $_GET['id'];
-    $query = "SELECT * FROM anggota WHERE id = $id";
 
+    $query = "SELECT * FROM anggota WHERE id = $id";
     $result = mysqli_query($koneksi, $query);
     $row = mysqli_fetch_assoc($result);
-
     mysqli_close($koneksi);
     ?>
 
     <div class="container mt-4">
         <h2>Edit Data Anggota</h2>
-
         <form action="proses.php?aksi=ubah" method="post">
             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
@@ -63,5 +59,4 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
