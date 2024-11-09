@@ -41,7 +41,6 @@ if ($aksi == 'tambah') {
         } else {
             echo "Gagal menghapus data: " . mysqli_error($koneksi);
         }
-        
     } else {
         echo "ID tidak valid.";
     }
