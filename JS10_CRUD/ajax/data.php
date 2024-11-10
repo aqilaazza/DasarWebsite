@@ -99,6 +99,7 @@ $(document).ready(function() {
     });
 });
 
+//menghapus data
 $(document).on('click', '.hapus_data', function() {
     var id = $(this).attr('id');
 
