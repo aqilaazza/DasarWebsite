@@ -31,6 +31,7 @@ include 'auth.php';
                             <label>Nama</label>
                             <input type="hidden" name="id" id="id">
                             <input type="text" name="nama" id="nama" class="form-control" required="true">
+                            <p class="text-danger" id="err_nama"></p>
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -39,6 +40,7 @@ include 'auth.php';
                             <input type="radio" name="jenis_kelamin" id="jkel1" value="L" required="true"> Laki-laki
                             <input type="radio" name="jenis_kelamin" id="jkel2" value="P"> Perempuan
                         </div>
+                        <p class="text-danger" id="err_jenis_kelamin"></p>
                     </div>
                 </div>
                 <div class="form-group">
