@@ -1,7 +1,7 @@
 <?php
 function set_flashdata($key = "", $value = "")
 {
-    if (empty($key) && empty($value)) {
+    if (!empty($key) && !empty($value)) {
         $_SESSION['_flashdata'][$key] = $value;
         return true;
     }
@@ -15,7 +15,7 @@ function get_flashdata($key = "")
         unset($_SESSION['_flashdata'][$key]);
         return $data;
     } else {
-        echo "<script>alert('Flash Message {$key} is not defined.')</script>";
+        echo "<script> alert('Flash Message \'{$key}\' is not defined.')</script>";
     }
 }
 
@@ -31,8 +31,8 @@ function pesan($key = "", $pesan = "")
             <strong>Berhasil! </strong> {$pesan}
             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>");
-    } elseif ($key == "error") {
-        set_flashdata('error', "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+    } elseif ($key == "danger") {
+        set_flashdata('danger', "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
             <strong>Gagal! </strong> {$pesan}
             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>");
@@ -43,4 +43,3 @@ function pesan($key = "", $pesan = "")
         </div>");
     }
 }
-?>
